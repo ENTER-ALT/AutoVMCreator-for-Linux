@@ -1,0 +1,8 @@
+[LoggerStatus.SUCCESS] | VBoxManage createvm  --name o10 --ostype Linux_64 --register | Thu Aug 22 21:55:11 2024
+[LoggerStatus.SUCCESS] | VBoxManage modifyvm o10 --description allo --memory=1024 --vram=8 --cpus=1 --nic1=bridged --autostart-enabled=off --drag-and-drop=bidirectional --bridge-adapter1=wlan0 | Thu Aug 22 21:55:11 2024
+[LoggerStatus.SUCCESS] | VBoxManage createvm  --name o10 --ostype Linux_64 --register | Thu Aug 22 21:56:38 2024
+[LoggerStatus.SUCCESS] | VBoxManage modifyvm o10 --description allo --memory=1024 --vram=8 --cpus=1 --nic1=bridged --autostart-enabled=off --drag-and-drop=bidirectional --bridge-adapter1=wlan0 | Thu Aug 22 21:56:38 2024
+[LoggerStatus.SUCCESS] | VBoxManage createvm  --name o10 --ostype Linux_64 --register | Thu Aug 22 21:59:06 2024
+[LoggerStatus.SUCCESS] | VBoxManage modifyvm o10 --description allo --memory=1024 --vram=8 --cpus=1 --nic1=bridged --autostart-enabled=off --drag-and-drop=bidirectional --bridge-adapter1=wlan0 | Thu Aug 22 21:59:06 2024
+[LoggerStatus.SUCCESS] | VBoxManage createvm  --name o10 --ostype Linux_64 --register | Thu Aug 22 22:02:54 2024
+[LoggerStatus.SUCCESS] | VBoxManage modifyvm o10 --description allo --memory=1024 --vram=8 --cpus=1 --nic1=bridged --autostart-enabled=off --drag-and-drop=bidirectional --bridge-adapter1=wlan0 | Thu Aug 22 22:02:54 2024
