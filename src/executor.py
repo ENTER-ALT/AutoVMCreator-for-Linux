@@ -1,7 +1,7 @@
 import subprocess
 from operator import rshift
 
-from src.logger import Logger, LoggerStatus
+from logger import Logger, LoggerStatus
 
 
 class Executor:
