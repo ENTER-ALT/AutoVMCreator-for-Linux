@@ -11,7 +11,7 @@ def main():
     vm1 = VMConfig()
     Creator.create_vm(vm1)
     Creator.modify_vm(vm1)
-    hdd_medium = HDDMediumConfig(vm1.folder + "disk1.vmdk")
+    hdd_medium = HDDMediumConfig(vm1.folder + "disk2.vmdk")
     Creator.create_hdd_medium(hdd_medium)
 
     storage_controller1 = StorageControllerConfig()

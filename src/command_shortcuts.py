@@ -37,6 +37,3 @@ STORAGECTL_OPTION = " --storagectl="
 PORT_OPTION = " --port="
 TYPE_OPTION = " --type "
 MEDIUM_OPTION = " --medium="
-
-#DEV NULL
-DEV_NULL_OPTION = ">/dev/null"

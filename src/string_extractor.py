@@ -12,7 +12,7 @@ class StringExtractor:
         folder_path = StringExtractor.extract_from_string_with_pattern(output, pattern)
         if not folder_path:
             raise ValueError("Folder path not found in " + folder_path)
-        folder_path = folder_path.replace(" ", "\ ")
+        #folder_path = folder_path.replace(" ", "\ ")
         return folder_path
 
     @staticmethod
