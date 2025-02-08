@@ -5,6 +5,15 @@ STORAGECTL_COMMAND = "storagectl "
 CREATEMEDIUM_COMMAND = "createmedium "
 STORAGEATTACH_COMMAND = "storageattach "
 
+# VM Listing
+LIST_COMMAND = "list "
+VM_OPTION = "vms"
+
+# VM Deletion
+UNREGISTERVM_COMMAND = "unregistervm "
+DELETE_OPTION = " --delete"
+
+
 # VM Creation
 NAME_OPTION = " --name "
 OSTYPE_OPTION = " --ostype "

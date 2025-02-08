@@ -20,15 +20,23 @@ class UserInterface:
         if not file_exists:
             raise ValueError(f"File '{order_file}' does not exist.")
 
-        return iso_path
+        return order_file
 
     @staticmethod
     def show_orders(orders: list[Order]):
         print("Orders:")
-        for order in orders:
-            print(f"Order: {order.quantity} x {order.vm_config.name} ({order.vm_config.cpus} CPUs, {order.vm_config.ram} GB RAM) with {order.vm_config.hdd_size} GB disk, iso: {order.vm_config.iso_file}")
+        for idx, order in enumerate(orders, start=1):
+            print(f"{idx}. Order: {order.quantity} x {order.vm_config.name} ({order.vm_config.cpus} CPUs, {order.vm_config.ram} GB RAM) with {order.vm_config.hdd_size} GB disk, iso: {order.vm_config.iso_file}")
+
+    @staticmethod
+    def display_message(message: str):
+        print(message)
+
+    @staticmethod
+    def display_error_message(message: str):
+        print(f"Error: {message}")
 
     @staticmethod
     def end():
-        print("VM Creation Completed Successfully 󰄛")
+        UserInterface.display_message("VM Creation Completed Successfully 󰄛")
 

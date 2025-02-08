@@ -44,6 +44,24 @@ class VMConfig:
         self.iso_file = iso_file
         self.disk_name = disk_name
 
+    def copy(self, idx):
+        return VMConfig(
+            name=self.name + f"_{idx}",
+            folder=self.folder,
+            os_type=self.os_type,
+            description=self.description,
+            hdd_size=self.hdd_size,
+            ram=self.ram,
+            vram=self.vram,
+            cpus=self.cpus,
+            nic1=self.nic1,
+            autostart_enabled=self.autostart_enabled,
+            drag_and_drop=self.drag_and_drop,
+            bridge_adapter=self.bridge_adapter,
+            iso_file=self.iso_file,
+            disk_name=self.disk_name
+        )
+
     @classmethod
     def from_dict(cls, data):
         return cls(**data)

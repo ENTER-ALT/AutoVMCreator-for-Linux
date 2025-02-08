@@ -3,10 +3,10 @@ import subprocess
 from logger import Logger, LoggerStatus
 
 
-class Executor:
+class ShellExecutor:
     @staticmethod
     def execute_command(commands: list):
-        full_command = Executor.build_command(commands)
+        full_command = ShellExecutor.build_command(commands)
         result = subprocess.run(full_command, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
         if result.stderr and result.stderr.__contains__("error"):
             Logger.add_record(text=result.stderr, status=LoggerStatus.ERROR)

@@ -26,6 +26,11 @@ class StringExtractor:
         return iso_file
 
     @staticmethod
+    def vm_exists(vm_name: str, output: str):
+        pattern = rf"\"{vm_name}\""
+        return re.search(pattern, output) is not None
+
+    @staticmethod
     def extract_from_string_with_pattern(text: str, pattern: str):
         # Search for the pattern in the text
         match = re.search(pattern, text)
