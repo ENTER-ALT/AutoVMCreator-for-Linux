@@ -17,6 +17,7 @@ class VMConfig:
         self.folder = ""
         self.os_type = OSType.LINUX_64.value
         self.description = "allo"
+        self.hdd_size = "10240"
         self.ram = "1024"
         self.vram = "8"
         self.cpus = "1"
@@ -24,4 +25,6 @@ class VMConfig:
         self.autostart_enabled = "off"
         self.drag_and_drop = DragAndDropMode.BIDIRECTIONAL.value
         self.bridge_adapter = "wlan0"
+
+        self.disk_name = "disk.vmdk"
         

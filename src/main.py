@@ -1,17 +1,16 @@
-from configs.medium_attachment_config import DriveType
-from configs.storagecontroller_config import StorageControllerConfig
-from configs.vm_config import VMConfig
+from types.configs.medium_attachment_config import DriveType
+from types.configs.storagecontroller_config import StorageControllerConfig
+from types.configs.vm_config import VMConfig
 from creator import Creator
-from configs.medium_config import HDDMediumConfig, MediumConfig
+from types.configs.medium_config import HDDMediumConfig, MediumConfig
 from user_interface import UserInterface
 
 def main():
-
     iso_file = UserInterface.start()
     vm1 = VMConfig()
     Creator.create_vm(vm1)
     Creator.modify_vm(vm1)
-    hdd_medium = HDDMediumConfig(vm1.folder + "disk2.vmdk")
+    hdd_medium = HDDMediumConfig(vm1.folder + "/" + vm1.name + "_" + vm1.disk_name)
     Creator.create_hdd_medium(hdd_medium)
 
     storage_controller1 = StorageControllerConfig()

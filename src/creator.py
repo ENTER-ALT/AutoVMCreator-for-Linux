@@ -1,7 +1,7 @@
-from configs.vm_config import VMConfig
-from configs.storagecontroller_config import StorageControllerConfig
-from configs.medium_attachment_config import MediumAttachmentConfig, DriveType
-from configs.medium_config import MediumConfig, HDDMediumConfig
+from types.configs.vm_config import VMConfig
+from types.configs.storagecontroller_config import StorageControllerConfig
+from types.configs.medium_attachment_config import MediumAttachmentConfig, DriveType
+from types.configs.medium_config import MediumConfig, HDDMediumConfig
 from executor import Executor
 from string_extractor import StringExtractor
 from command_shortcuts import *
