@@ -1,0 +1,42 @@
+{
+  "orders": [
+    {
+      "vm_config": {
+        "name": "o10",
+        "folder": "",
+        "os_type": "Linux_64",
+        "description": "allo",
+        "hdd_size": "10240",
+        "ram": "1024",
+        "vram": "8",
+        "cpus": "1",
+        "nic1": "bridged",
+        "autostart_enabled": "off",
+        "drag_and_drop": "bidirectional",
+        "bridge_adapter": "wlan0",
+        "disk_name": "disk.vmdk",
+        "iso_file": "/home/user/Saved/OS/lubuntu-24.04.1-desktop-amd64.iso"
+      },
+      "quantity": 2
+    },
+    {
+      "vm_config": {
+        "name": "o1s0",
+        "folder": "",
+        "os_type": "Linux_64",
+        "description": "allo",
+        "hdd_size": "10240",
+        "ram": "1024",
+        "vram": "8",
+        "cpus": "1",
+        "nic1": "bridged",
+        "autostart_enabled": "off",
+        "drag_and_drop": "bidirectional",
+        "bridge_adapter": "wlan0",
+        "disk_name": "disk.vmdk",
+        "iso_file": "/home/user/Saved/OS/lubuntu-24.04.1-desktop-amd64.iso"
+      },
+      "quantity": 5
+    }
+  ]
+}
