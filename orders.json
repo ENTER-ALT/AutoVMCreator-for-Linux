@@ -2,41 +2,13 @@
   "orders": [
     {
       "vm_config": {
-        "name": "lin1",
-        "folder": "",
-        "os_type": "Linux_64",
-        "description": "lin1",
-        "hdd_size": "10240",
-        "ram": "1024",
-        "vram": "8",
-        "cpus": "1",
-        "nic1": "bridged",
-        "autostart_enabled": "off",
-        "drag_and_drop": "bidirectional",
-        "bridge_adapter": "wlan0",
-        "disk_name": "disk.vmdk",
-        "iso_file": ""
+        "name": "example",
+        "image_size_gb": "15",
+        "ram_gb": "2",
+        "image_file_name": "example.img",
+        "iso_file_name": "example.iso"
       },
-      "quantity": 2
-    },
-    {
-      "vm_config": {
-        "name": "lin2",
-        "folder": "",
-        "os_type": "Linux_64",
-        "description": "lin2",
-        "hdd_size": "10240",
-        "ram": "1024",
-        "vram": "8",
-        "cpus": "1",
-        "nic1": "bridged",
-        "autostart_enabled": "off",
-        "drag_and_drop": "bidirectional",
-        "bridge_adapter": "wlan0",
-        "disk_name": "disk.vmdk",
-        "iso_file": ""
-      },
-      "quantity": 2
+      "quantity": 4
     }
   ]
 }
