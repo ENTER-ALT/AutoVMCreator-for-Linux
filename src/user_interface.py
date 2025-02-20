@@ -26,7 +26,7 @@ class UserInterface:
     def show_orders(orders: list[Order]):
         print("Orders:")
         for idx, order in enumerate(orders, start=1):
-            print(f"{idx}. Order: {order.quantity} x {order.vm_config.name} ({order.vm_config.cpus} CPUs, {order.vm_config.ram} GB RAM) with {order.vm_config.hdd_size} GB disk, iso: {order.vm_config.iso_file}")
+            print(f"{idx}. Order: {order.quantity} x {order.vm_config.name} ({order.vm_config.ram_gb} GB RAM) with {order.vm_config.image_size_gb} GB disk, iso: {order.vm_config.iso_file_name}")
 
     @staticmethod
     def display_message(message: str):
