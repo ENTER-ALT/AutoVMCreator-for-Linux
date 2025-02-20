@@ -1,6 +1,6 @@
 from typing import Dict, Any
 from enum import Enum
-from src.data_types.models.image import Image
+from image import Image
 
 class Status(Enum):
     RUNNING = "Running"

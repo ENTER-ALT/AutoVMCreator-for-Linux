@@ -1,12 +1,12 @@
 from typing import Optional, Dict, Any
-from src.data_types.models.vm import VM
+from vm import VM
 
 class Image:
     def __init__(
         self,
         vm: VM,
         image_file_name: str = "example.img",
-        backup_image: Optional[Image] = None,
+        backup_image: Optional['Image'] = None,
         size_gb: str = "15",
         installed: bool = False
     ) -> None:

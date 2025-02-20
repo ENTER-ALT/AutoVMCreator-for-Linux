@@ -1,5 +1,6 @@
-from typing import Optional, Dict, Any
+from typing import Dict, Any
 from enum import Enum
+from image import Image
 
 class Status(Enum):
     SUCCESS = "Success"

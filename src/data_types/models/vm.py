@@ -3,13 +3,13 @@ from typing import Dict, Any
 class Vm:
     def __init__(
         self,
+        iso_file: str,
         name: str = "example_name",
-        ram_gb: str = "2",
-        iso_file: str
+        ram_gb: str = "2"
     ) -> None:
+        self.iso_file = iso_file
         self.name = name
         self.ram_gb = ram_gb
-        self.iso_file = iso_file
 
     def copy(self, idx: int) -> 'Vm':
         return Vm(
