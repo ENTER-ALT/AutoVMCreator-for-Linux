@@ -39,16 +39,7 @@ set_base_name() {
 
 # Function to generate a unique image name
 generate_image_name() {
-  IMAGE_EXTENSION="img"
-  INDEX=1
-  while [ -f "${BASE_NAME}${INDEX}.${IMAGE_EXTENSION}" ]; do
-    INDEX=$((INDEX + 1))
-  done
-  if [ "$INDEX" -eq 1 ]; then
-    IMAGE_NAME="${BASE_NAME}.${IMAGE_EXTENSION}"
-  else
-    IMAGE_NAME="${BASE_NAME}${INDEX}.${IMAGE_EXTENSION}"
-  fi
+  IMAGE_NAME="${BASE_NAME}"
 }
 
 # Function to create the disk image

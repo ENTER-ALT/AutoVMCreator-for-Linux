@@ -2,8 +2,8 @@
 
 # Function to display usage information
 usage() {
-  echo "Usage: $0 <image-file> [ssh-forwarding-port] [ram] [--no-graphic|-ng] [--help|-h]"
-  echo "Example: $0 my_image.img 7000 2 --no-graphic"
+  echo "Usage: $0 <image-file> --ssh_forwarding_port=[ssh-forwarding-port] --ram=[ram] [--no-graphic|-ng] [--help|-h]"
+  echo "Example: $0 my_image.img --ssh_forwarding_port=7000 --ram=2 --no-graphic"
   exit 1
 }
 
@@ -55,7 +55,7 @@ parse_arguments() {
       --help|-h)
         usage
         ;;
-      [0-9]*)
+      --ssh_forwarding_port=[0-9]*)
         SSH_PORT=$1
         shift
         ;;

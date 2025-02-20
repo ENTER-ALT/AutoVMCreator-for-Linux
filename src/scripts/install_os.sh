@@ -2,7 +2,7 @@
 
 # Function to check the number of arguments
 check_arguments() {
-  if [ "$#" -ne 2 ]; then
+  if [ "$#" -le 1 ]; then
     echo "Incorrect number of arguments."
     echo "Usage: $0 <iso-file> <image-file> --ram=[ram]"
     echo "Example: $0 Manjaro.iso my_image.img --ram=2"
