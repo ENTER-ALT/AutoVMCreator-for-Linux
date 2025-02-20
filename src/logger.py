@@ -1,12 +1,13 @@
 from time import ctime
 from enum import Enum, auto
+import os
 
 class LoggerStatus(Enum):
     ERROR = auto()
     SUCCESS = auto()
 
 class Logger:
-    filename = "build_debug.log"
+    filename = os.path.join(os.path.dirname(__file__), "build_debug.log")
 
     @staticmethod
     def add_record(text: str, *, status: LoggerStatus) -> None:
