@@ -1,48 +1,12 @@
-VBOXMANAGE_COMMAND = "VBoxManage "
-CREATEVM_COMMAND = "createvm "
-MODIFYVM_COMMAND = "modifyvm "
-STORAGECTL_COMMAND = "storagectl "
-CREATEMEDIUM_COMMAND = "createmedium "
-STORAGEATTACH_COMMAND = "storageattach "
+import os
+# Scripts path
+CREATE_IMAGE_SCRIPT = os.path.join(os.path.dirname(__file__), "scripts/create_image.sh")
+INSTALL_OS_SCRIPT = os.path.join(os.path.dirname(__file__), "scripts/install_os.sh")
+CREATE_LINKED_IMAGES_SCRIPT = os.path.join(os.path.dirname(__file__), "scripts/create_linked_image.sh")
+RUN_MAIN_IMAGE_SCRIPT = os.path.join(os.path.dirname(__file__), "scripts/run_vm.sh")
+DELETE_VM_SCRIPT = os.path.join(os.path.dirname(__file__), "scripts/delete_vm.sh")
 
-# VM Listing
-LIST_COMMAND = "list "
-VM_OPTION = "vms"
-
-# VM Deletion
-UNREGISTERVM_COMMAND = "unregistervm "
-DELETE_OPTION = " --delete"
-
-
-# VM Creation
-NAME_OPTION = " --name "
-OSTYPE_OPTION = " --ostype "
-REGISTER_OPTION = " --register"
-
-# VM Modification
-DESCRIPTION_OPTION = " --description "
-ICON_FILE_OPTION = " --icon-file="
-MEMORY_OPTION = " --memory="
-VRAM_OPTION = " --vram="
-CPUS_OPTION = " --cpus="
-NIC1_OPTION = " --nic1="
-AUTOSTART_ENABLED_OPTION = " --autostart-enabled="
-DRAG_AND_DROP_OPTION = " --drag-and-drop="
-BRIDGE_ADAPTER1_OPTION = " --bridge-adapter1="
-
-# Storage Controller Creation
-STORAGECTL_NAME_OPTION = " --name "
-ADD_OPTION = " --add "
-CONTROLLER_OPTION = " --controller "
-
-# Disk Creation
-FILENAME_OPTION = " --filename="
-SIZE_OPTION = " --size="
-FORMAT_OPTION = " --format="
-VARIANT_OPTION = " --variant="
-
-# Storage Attachment
-STORAGECTL_OPTION = " --storagectl="
-PORT_OPTION = " --port="
-TYPE_OPTION = " --type "
-MEDIUM_OPTION = " --medium="
+# Install OS and Run VM script shortcuts
+RAM_OPTION = " --ram="
+SSH_FORWARDING_PORT_OPTION = " --ssh_forwarding_port="
+NO_GRAPHIC_OPTION = " --no-graphic"
