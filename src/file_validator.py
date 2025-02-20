@@ -1,7 +1,7 @@
 import os
 
 
-class InputValidator:
+class FileValidator:
     @staticmethod
     def validate_file_exists(filepath: str):
         if os.path.exists(filepath):
