@@ -13,47 +13,49 @@ class VMManager:
 
     def vm_exists(self):
         return FileValidator.validate_file_exists(self.vm_config.image_file_name)
-    
-    def delete_vm(self):
-        command_message = [
-            VBOXMANAGE_COMMAND,
-            UNREGISTERVM_COMMAND,
-            self.vm_config.name,
-            DELETE_OPTION
-        ]
-
-        ShellExecutor.execute_command(command_message)
-    
-    def create_vm(self):
-        command_message = [
-            VBOXMANAGE_COMMAND,
-            CREATEVM_COMMAND,
-            NAME_OPTION, self.vm_config.name,
-            OSTYPE_OPTION, self.vm_config.os_type,
-            REGISTER_OPTION
-        ]
-
-        output = ShellExecutor.execute_command(command_message)
-        self.vm_config.folder = StringExtractor.extract_folder_path_from_create_vm_output(output)
-
-    def init_vm(self):
-        command_message = [
-        ]
-
-        ShellExecutor.execute_command(command_message)
 
     def create_image(self):
-        # Implementation for creating an image
-        pass
+        command_message = [
+            CREATE_IMAGE_SCRIPT,
+            self.vm_config.image_size_gb,
+            self.vm_config.image_file_name,
+        ]
+
+        ShellExecutor.execute_command(command_message)
 
     def install_OS(self):
-        # Implementation for installing the OS
-        pass
+        command_message = [
+            INSTALL_OS_SCRIPT,
+            self.vm_config.iso_file_name,
+            self.vm_config.image_file_name,
+            RAM_OPTION,self.vm_config.ram_gb,
+        ]
+
+        ShellExecutor.execute_command(command_message)
 
     def create_linked_images(self, quantity):
-        # Implementation for creating linked images
-        pass
+        for i in range(quantity):
+            linked_image_name = self.vm_config.image_file_name
+            self.linked_images.append(linked_image_name)
+            command_message = [
+                CREATE_LINKED_IMAGES_SCRIPT,
+                self.vm_config.image_file_name
+            ]
 
-    def run_VM(self):
-        # Implementation for running the VM
-        pass
+            ShellExecutor.execute_command(command_message)
+
+    def run_main_image(self):
+        command_message = [
+            RUN_MAIN_IMAGE_SCRIPT,
+            self.vm_config.image_file_name,
+        ]
+
+        ShellExecutor.execute_command(command_message)
+
+    def delete_vm(self):
+        command_message = [
+            DELETE_VM_SCRIPT,
+            self.vm_config.image_file_name,
+        ]
+
+        ShellExecutor.execute_command(command_message)
