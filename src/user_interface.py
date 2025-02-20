@@ -1,7 +1,7 @@
 import sys
 
 from string_extractor import StringExtractor
-from input_validator import InputValidator
+from file_validator import FileValidator
 from data_types.order import Order
 
 
@@ -16,7 +16,7 @@ class UserInterface:
         if not order_file.endswith('.json'):
             raise ValueError("The order file must be a JSON file with a .json extension")
         
-        file_exists = InputValidator.validate_file_exists(order_file)
+        file_exists = FileValidator.validate_file_exists(order_file)
         if not file_exists:
             raise ValueError(f"File '{order_file}' does not exist.")
 
