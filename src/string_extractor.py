@@ -1,7 +1,7 @@
 import os
 import re
 
-from input_validator import InputValidator
+from file_validator import FileValidator
 
 
 class StringExtractor:
@@ -20,15 +20,10 @@ class StringExtractor:
         pattern = r"--iso=(.*.iso)"
         iso_file = StringExtractor.extract_from_string_with_pattern(user_input, pattern)
         iso_file = os.path.expanduser(iso_file) # in case the user uses ~ in the path
-        file_exists = InputValidator.validate_file_exists(iso_file)
+        file_exists = FileValidator.validate_file_exists(iso_file)
         if not file_exists:
             raise ValueError(f"ISO file '{iso_file}' does not exist.")
         return iso_file
-
-    @staticmethod
-    def vm_exists(vm_name: str, output: str):
-        pattern = rf"\"{vm_name}\""
-        return re.search(pattern, output) is not None
 
     @staticmethod
     def extract_from_string_with_pattern(text: str, pattern: str):
