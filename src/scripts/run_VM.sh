@@ -1,54 +1,22 @@
 #!/bin/bash
 
-# Check if at least one argument (image file) is provided
-if [ "$#" -lt 1 ]; then
-  echo "Incorrect number of arguments."
-  echo "Usage: $0 <image-file> [ssh-forwarding-port] [ram] [--no-graphic|-ng]"
+# Function to display usage information
+usage() {
+  echo "Usage: $0 <image-file> [ssh-forwarding-port] [ram] [--no-graphic|-ng] [--help|-h]"
   echo "Example: $0 my_image.img 7000 2 --no-graphic"
   exit 1
-fi
+}
 
-# Default values
-SSH_PORT=""
-RAM="2G"
-GRAPHIC_MODE=true
+# Function to check if the image file exists
+check_image_file() {
+  if [ ! -f "$IMAGE_FILE" ]; then
+    echo "Image file '$IMAGE_FILE' not found or not a valid file."
+    usage
+  fi
+}
 
-# Parse arguments
-IMAGE_FILE=$1
-shift  # Shift to process optional arguments
-
-# Process additional arguments
-while [[ "$#" -gt 0 ]]; do
-  case $1 in
-    --no-graphic|-ng)
-      GRAPHIC_MODE=false
-      shift
-      ;;
-    [0-9]*)
-      SSH_PORT=$1
-      shift
-      ;;
-    --ram=*)
-      assign_ram "${1#*=}"
-      shift
-      ;;
-    *)
-      echo "Unknown argument: $1"
-      echo "Usage: $0 <image-file> [ssh-forwarding-port] [--no-graphic|-ng]"
-      exit 1
-      ;;
-  esac
-done
-
-# Check if the image file exists and is a valid file
-if [ ! -f "$IMAGE_FILE" ]; then
-  echo "Image file '$IMAGE_FILE' not found or not a valid file."
-  echo "Usage: $0 <image-file> [ssh-forwarding-port] [--no-graphic|-ng]"
-  exit 1
-fi
-
-# If SSH_PORT is not specified, find the first available port in range 7000-8000
-if [ -z "$SSH_PORT" ]; then
+# Function to find the first available port in range 7000-8000
+find_available_port() {
   for PORT in {7000..8000}; do
     if ! ss -tuln | grep -q ":$PORT "; then
       SSH_PORT=$PORT
@@ -61,8 +29,9 @@ if [ -z "$SSH_PORT" ]; then
     exit 1
   fi
   echo "No port specified, using available port: $SSH_PORT"
-fi
+}
 
+# Function to assign RAM
 assign_ram() {
   if [[ "$1" =~ ^[0-9]+$ ]]; then
     RAM="${1}G"
@@ -72,20 +41,87 @@ assign_ram() {
   fi
 }
 
-# Prepare QEMU command options based on graphic mode
-if [ "$GRAPHIC_MODE" = true ]; then
-  DISPLAY_OPTION="-display sdl,gl=on"
-else
-  DISPLAY_OPTION="-nographic"
-fi
+# Function to parse arguments
+parse_arguments() {
+  IMAGE_FILE=$1
+  shift  # Shift to process optional arguments
 
-# Run the QEMU command with the provided image file and SSH forwarding port
-qemu-system-x86_64 \
-  -enable-kvm \
-  -drive file="$IMAGE_FILE" \
-  -m "$RAM" \
-  -cpu host \
-  -vga virtio \
-  -net user,hostfwd=tcp::$SSH_PORT-:22 \
-  -net nic \
-  $DISPLAY_OPTION
+  while [[ "$#" -gt 0 ]]; do
+    case $1 in
+      --no-graphic|-ng)
+        GRAPHIC_MODE=false
+        shift
+        ;;
+      --help|-h)
+        usage
+        ;;
+      [0-9]*)
+        SSH_PORT=$1
+        shift
+        ;;
+      --ram=*)
+        assign_ram "${1#*=}"
+        shift
+        ;;
+      *)
+        echo "Unknown argument: $1"
+        usage
+        ;;
+    esac
+  done
+}
+
+# Function to prepare QEMU command options based on graphic mode
+prepare_display_option() {
+  if [ "$GRAPHIC_MODE" = true ]; then
+    DISPLAY_OPTION="-display sdl,gl=on"
+  else
+    DISPLAY_OPTION="-nographic"
+  fi
+}
+
+# Function to run the QEMU command
+run_qemu() {
+  qemu-system-x86_64 \
+    -enable-kvm \
+    -drive file="$IMAGE_FILE" \
+    -m "$RAM" \
+    -cpu host \
+    -vga virtio \
+    -net user,hostfwd=tcp::$SSH_PORT-:22 \
+    -net nic \
+    $DISPLAY_OPTION
+}
+
+# Main script execution
+main() {
+  # Check if at least one argument (image file) is provided
+  if [ "$#" -lt 1 ]; then
+    usage
+  fi
+
+  # Default values
+  SSH_PORT=""
+  RAM="2G"
+  GRAPHIC_MODE=true
+
+  # Parse arguments
+  parse_arguments "$@"
+
+  # Check if the image file exists and is a valid file
+  check_image_file
+
+  # If SSH_PORT is not specified, find the first available port in range 7000-8000
+  if [ -z "$SSH_PORT" ]; then
+    find_available_port
+  fi
+
+  # Prepare QEMU command options based on graphic mode
+  prepare_display_option
+
+  # Run the QEMU command with the provided image file and SSH forwarding port
+  run_qemu
+}
+
+# Call the main function with all script arguments
+main "$@"
