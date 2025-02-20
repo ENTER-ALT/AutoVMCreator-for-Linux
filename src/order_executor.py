@@ -22,10 +22,10 @@ class OrderExecutor:
 
         pipeline = [
             (self.throw_error_if_exists, [vm1.name]),
-            (vm_manager.create_image),
-            (vm_manager.install_OS),
+            (vm_manager.create_image, []),
+            (vm_manager.install_OS, []),
             (vm_manager.create_linked_images, [order.quantity]),
-            (vm_manager.run_VM),
+            (vm_manager.run_main_image, []),
         ]
 
         for func, args in pipeline:

@@ -5,6 +5,7 @@ import os
 class LoggerStatus(Enum):
     ERROR = auto()
     SUCCESS = auto()
+    INFO = auto()
 
 class Logger:
     filename = os.path.join(os.path.dirname(__file__), "build_debug.log")
